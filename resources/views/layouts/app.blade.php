@@ -14,11 +14,43 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body x-data="{ open: false }">
     <!-- HEADER -->
     <header>
         @include('layouts.navigation') {{-- Using Breeze's navigation for now --}}
     </header>
+
+    <div class="mobile-menu" id="mobile-menu" :class="{'active': open, 'hidden': ! open}">
+        <a href="{{ route('welcome') }}" class="cta-button">Accueil</a>
+        <a href="{{ route('trips.index') }}" class="cta-button">Covoiturage</a>
+        <a href="{{ route('contact') }}" class="cta-button">Contact</a>
+
+        @php
+            use Illuminate\Support\Facades\Auth;
+        @endphp
+
+        @if (Auth::guard('admin')->check())
+            <a href="{{ route('dashboard_admin') }}" class="cta-button user-identifier">ADMIN</a>
+        @elseif(Auth::guard('employe')->check())
+            <a href="{{ route('dashboard_employe') }}" class="cta-button user-identifier">
+                {{ Auth::guard('employe')->user()->name }}
+            </a>
+        @elseif(Auth::guard('web')->check())
+            <a href="{{ route('dashboard_users') }}"
+                class="cta-button user-identifier">{{ Auth::guard('web')->user()->pseudo }}</a>
+        @endif
+
+        @if (Auth::guard('admin')->check() || Auth::guard('employe')->check() || Auth::guard('web')->check())
+            <form method="POST" action="{{ route('logout') }}" class="mobile-logout-form">
+                @csrf
+                <button type="submit" class="cta-button">Déconnexion</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="cta-button">Connexion</a>
+        @endif
+
+        <div class="close-menu" id="close-menu" @click="open = false">&times;</div>
+    </div>
 
     <!-- MAIN QUI CHANGE -->
     <main>

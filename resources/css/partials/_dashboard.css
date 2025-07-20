@@ -1,0 +1,1674 @@
+/* Dashboard utilisateur*/
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 1rem;
+}
+
+.dashboard-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* grille pour les widgets */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* widget */
+.dashboard-widget {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-widget:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.widget-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.widget-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.widget-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.widget-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.widget-action-btn:hover {
+    background-color: #27ae60;
+    transform: scale(1.1);
+}
+
+.widget-badge {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+/* Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+.widget-content {
+    padding: 1.5rem;
+}
+
+/* Profile */
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1.5rem;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+/* Modale photo de profil */
+.profile-photo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .profile-photo-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.profile-photo-preview, .profile-photo-upload {
+    flex: 1;
+    text-align: center;
+}
+
+.photo-preview-area {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1rem auto;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-preview-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-container {
+    position: relative;
+}
+
+
+.delete-photo-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.delete-photo-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+}
+
+.photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ecc71;
+    color: white;
+}
+
+.profile-photo-upload input[type="file"] {
+    display: block;
+    margin: 1rem auto;
+}
+
+.form-help-text {
+    display: block;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 2rem;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+.profile-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.profile-details p {
+    margin: 0 0 0.75rem 0;
+    color: #7f8c8d;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-credits {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.credits-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+.credits-label {
+    color: #2c3e50;
+}
+
+.credits-info {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}
+
+.recharge-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+}
+
+.recharge-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Role ////////////////////////////////////*/
+.current-role {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.role-label {
+    margin-right: 0.5rem;
+    color: #7f8c8d;
+}
+
+.role-value {
+    font-weight: bold;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.role-value.passager {
+    background-color: #3498db;
+    color: white;
+}
+
+.role-value.conducteur {
+    background-color: #e67e22;
+    color: white;
+}
+
+.role-value.les.deux {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.role-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.role-option {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-option:hover {
+    border-color: #2ecc71;
+    background-color: rgba(46, 204, 113, 0.05);
+}
+
+.role-option input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.role-option.selected {
+    border-color: #2ecc71;
+    background-color: rgba(46, 204, 113, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.role-radio {
+    display: flex;
+    justify-content: space-between;
+}
+
+.role-name {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: #2c3e50;
+}
+
+.role-desc {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.role-submit-btn, .btn-confirm-delete {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-submit-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-confirm-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #e74c3c;
+}
+
+.modal-footer {
+    padding: 1rem;
+    text-align: right;
+    border-top: 1px solid #f0f0f0;
+}
+
+
+/* card //////////////////////////////////////////*/
+.trip-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trip-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.trip-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.trip-card-header {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.trip-route-dash {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.trip-city {
+    color: #2c3e50;
+}
+
+.trip-date-dash {
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.date-display {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.arrival-day-info {
+    color: #e67e22;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+
+
+.trip-card-content {
+    padding: 1rem;
+}
+
+.trip-time-dash {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.departure-time-dash, .arrival-time-dash {
+    display: flex;
+    align-items: center;
+}
+
+.time-label {
+    width: 70px;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.time-value {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.trip-driver, .trip-vehicle {
+    margin-bottom: 0.75rem;
+}
+
+.driver-label, .vehicle-label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.driver-name, .vehicle-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.trip-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+}
+
+.trip-seats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7f8c8d;
+}
+
+.trip-price {
+    font-weight: bold;
+    color: #2ecc71;
+}
+
+.trip-card-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #f0f0f0;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    .trip-card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .trip-footer-left, .trip-footer-right {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.trip-footer-left {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.trip-footer-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trip-detail-btn, .trip-passengers-btn, .trip-start-btn, .trip-end-btn, .trip-edit-btn {
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+}
+
+@media (max-width: 360px) {
+    .trip-start-btn, .trip-edit-btn {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.trip-detail-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.trip-detail-btn:hover {
+    background-color: #2980b9;
+}
+
+.trip-details-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.trip-details-grid > div {
+    flex: 1 0 250px;
+}
+
+.trip-passengers-btn {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.trip-passengers-btn:hover {
+    background-color: #8e44ad;
+}
+
+.trip-start-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.trip-start-btn:hover {
+    background-color: #27ae60;
+}
+
+.trip-end-btn {
+    background-color: #e67e22;
+    color: white;
+}
+
+.trip-end-btn:hover {
+    background-color: #d35400;
+}
+
+.trip-edit-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.trip-edit-btn:hover {
+    background-color: #2980b9;
+}
+
+.trip-cancel-btn {
+    background-color: transparent;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.trip-cancel-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.cancel-form {
+    display: inline;
+}
+
+/* card vides */
+.no-trips, .no-vehicles, .no-preferences, .no-history {
+    text-align: center;
+    padding: 2rem;
+}
+
+.no-trips-icon, .no-vehicles-icon {
+    font-size: 3rem;
+    color: #bdc3c7;
+    margin-bottom: 1rem;
+}
+
+.search-trips-btn, .add-vehicle-btn, .create-trip-btn, .form-btn {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.search-trips-btn:hover, .add-vehicle-btn:hover, .create-trip-btn:hover, .form-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* voiture */
+.vehicles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.vehicle-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+@media (max-width: 420px) {
+    .vehicle-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-model {
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-brand {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-right: 0.25rem;
+}
+
+.vehicle-name {
+    color: #2c3e50;
+}
+
+.vehicle-details {
+    display: flex;
+    gap: 1rem 4.5rem;
+    flex-wrap: wrap;
+}
+
+.vehicle-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.vehicle-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: column
+}
+
+@media (min-width: 768px) {
+    .vehicle-actions {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 420px) {
+    .vehicle-actions {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.vehicle-edit-btn, .vehicle-delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.vehicle-edit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+}
+
+.vehicle-edit-btn:hover {
+    background-color: #2980b9;
+}
+
+.vehicle-delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.vehicle-delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.vehicle-delete-form {
+    margin: 0;
+}
+
+/* Préférence */
+.preferences-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.preference-item {
+    flex: 1 0 calc(50% - 0.5rem);
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+.preference-libre {
+    grid-column: 1/3;
+}
+
+.preference-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.preference-text {
+    flex: 1;
+    min-width: 0; /* Très important pour le wrapping */
+    padding-left: 0.5rem;
+    overflow: hidden;
+}
+/* Permet au texte d'être responsive*/
+
+.preference-item.preference-libre .preference-text span {
+    white-space: normal;
+    word-wrap: break-word;
+}
+/* coupe les mots trop longs avec un retour à la ligne*/
+/* Logique avec flex:1; min-width: 0; et word-wrap à maitriser!!!!!!!!!!!!!!!!!*/
+
+
+@media (max-width: 480px) {
+    .trip-route-dash {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* Tourne la fleche */
+    .trip-route-dash .svg-inline--fa.fa-arrow-right {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+
+
+    .preference-item {
+        flex: 1 0 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .preference-icon {
+        margin: 0 auto;
+    }
+
+    .preference-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .trip-date-dash {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .date-display {
+        justify-content: center;
+    }
+
+    .arrival-day-info {
+        margin-left: 0;
+    }
+
+    .trip-time-dash {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .trip-status {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+
+
+
+    .trip-vehicle {
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 360px) {
+
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #profile-avatar-clickable {
+        margin: 0 auto 1rem;
+    }
+
+    .profile-details {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-details p {
+        display: inline;
+    }
+
+    .profile-credits {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .credits-info {
+        margin-top: 0.25rem;
+    }
+
+    .trip-footer-left, .trip-footer-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .trip-card-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trip-start-btn, .trip-edit-btn, .trip-cancel-btn, .cancel-form {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .cancel-form button {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .fa-info-circle {
+        width: 40px;
+    }
+
+}
+
+
+
+
+
+
+
+
+/* Historique */
+.history-tabs {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1.5rem;
+}
+
+.history-tab {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #7f8c8d;
+    position: relative;
+}
+
+.history-tab:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 3px;
+    background-color: #2ecc71;
+    transition: width 0.3s;
+}
+
+.history-tab.active {
+    color: #2c3e50;
+}
+
+.history-tab.active:after {
+    width: 100%;
+}
+
+.history-tab-content {
+    display: none;
+}
+
+.history-tab-content.active {
+    display: block;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.history-item {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.history-item-header {
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.history-route {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.history-date {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.history-item-content {
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-cancelled {
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.status-completed {
+    color: #2ecc71;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.history-price, .history-earnings {
+    font-weight: 500;
+    color: #2ecc71;
+}
+
+.history-passengers {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Formulaires en attente */
+.pending-forms {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.form-card-header {
+    padding: 0.75rem;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-route {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.form-date {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.form-card-content {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* pop-up Passagers */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.modal-close {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #7f8c8d;
+}
+
+.modal-body {
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.modal-body P {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    margin-left: 10px;
+}
+
+#modal_edit_immat {
+    background-color: #eee;
+}
+
+
+.passengers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.passenger-item {
+    padding: 0.75rem;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.passenger-name {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.passenger-email {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: 0.25rem;
+}
+
+.passenger-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
+/* Animation des icônes */
+.no-trips-icon, .no-vehicles-icon, .avatar-placeholder {
+    transition: transform 0.3s ease;
+}
+
+.no-trips:hover .no-trips-icon,
+.no-vehicles:hover .no-vehicles-icon,
+.profile-avatar:hover .avatar-placeholder {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* tablette et ordi //////////////////////////////////////////////////*/
+@media (min-width: 768px) {
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px; /* Colonne gauche flexible et colonne droite fixe à 300px */
+        gap: 1.5rem;
+    }
+
+    /* DASHBOARD PASSAGER */
+    .dashboard-grid.passager {
+        grid-template-areas:
+            "profile role"
+            "booked role"
+            "history history";
+        grid-template-rows: auto auto 1fr;
+    }
+    .dashboard-grid.passager .profile-widget {
+        grid-area: profile;
+    }
+    .dashboard-grid.passager .role-widget {
+        grid-area: role;
+        width: 300px;
+        height: 100%;
+    }
+    .dashboard-grid.passager .booked-trips-widget {
+        grid-area: booked;
+    }
+    .dashboard-grid.passager .history-widget {
+        grid-area: history;
+        grid-column: 1 / -1;
+    }
+    /* Cacher les autres widgets pour Passager */
+    .dashboard-grid.passager .preferences-widget,
+    .dashboard-grid.passager .vehicles-widget,
+    .dashboard-grid.passager .offered-trips-widget,
+    .dashboard-grid.passager .pending-forms-widget {
+        display: none;
+    }
+
+    /* DASHBOARD CONDUCTEUR */
+    .dashboard-grid.conducteur {
+        grid-template-areas:
+            "profile role"
+            "prefs role"
+            "vehicles vehicles"
+            "offered offered"
+            "history history";
+        grid-template-rows: auto auto auto auto 1fr;
+    }
+    .dashboard-grid.conducteur .profile-widget {
+        grid-area: profile;
+    }
+    .dashboard-grid.conducteur .role-widget {
+        grid-area: role;
+        width: 300px;
+        height: 100%;
+    }
+    .dashboard-grid.conducteur .preferences-widget {
+        grid-area: prefs;
+    }
+    .dashboard-grid.conducteur .vehicles-widget {
+        grid-area: vehicles;
+        grid-column: 1 / -1;
+    }
+    .dashboard-grid.conducteur .offered-trips-widget {
+        grid-area: offered;
+        grid-column: 1 / -1;
+    }
+    .dashboard-grid.conducteur .history-widget {
+        grid-area: history;
+        grid-column: 1 / -1;
+    }
+    /* Cacher les autres widgets pour Conducteur */
+    .dashboard-grid.conducteur .booked-trips-widget,
+    .dashboard-grid.conducteur .pending-forms-widget {
+        display: none;
+    }
+
+    /* DASHBOARD LES DEUX */
+    .dashboard-grid.les-deux {
+        grid-template-areas:
+            "profile role"
+            "prefs role"
+            "vehicles vehicles"
+            "offered offered"
+            "booked booked"
+            "history history";
+        grid-template-rows: auto auto auto auto auto 1fr;
+    }
+    .dashboard-grid.les-deux .profile-widget {
+        grid-area: profile;
+    }
+    .dashboard-grid.les-deux .role-widget {
+        grid-area: role;
+        width: 300px;
+        height: 100%;
+    }
+    .dashboard-grid.les-deux .preferences-widget {
+        grid-area: prefs;
+    }
+    .dashboard-grid.les-deux .vehicles-widget {
+        grid-area: vehicles;
+        grid-column: 1 / -1;
+    }
+    .dashboard-grid.les-deux .booked-trips-widget {
+        grid-area: booked;
+        grid-column: 1 / -1;
+    }
+    .dashboard-grid.les-deux .offered-trips-widget {
+        grid-area: offered;
+        grid-column: 1 / -1;
+    }
+    .dashboard-grid.les-deux .history-widget {
+        grid-area: history;
+        grid-column: 1 / -1;
+    }
+
+    /* Autres ajustements */
+    .preferences-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .trip-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .history-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Animation => apparition des cartes */
+.card-animated {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation bouton */
+.trip-detail-btn, .trip-passengers-btn, .trip-start-btn, .trip-end-btn,
+.recharge-btn, .search-trips-btn, .add-vehicle-btn, .create-trip-btn,
+.form-btn, .role-submit-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.trip-detail-btn:after, .trip-passengers-btn:after, .trip-start-btn:after, .trip-end-btn:after,
+.recharge-btn:after, .search-trips-btn:after, .add-vehicle-btn:after, .create-trip-btn:after,
+.form-btn:after, .role-submit-btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+/* Animation d'ondulation que j'aime bien */
+.trip-detail-btn:focus:not(:active)::after, .trip-passengers-btn:focus:not(:active)::after,
+.trip-start-btn:focus:not(:active)::after, .trip-end-btn:focus:not(:active)::after,
+.recharge-btn:focus:not(:active)::after, .search-trips-btn:focus:not(:active)::after,
+.add-vehicle-btn:focus:not(:active)::after, .create-trip-btn:focus:not(:active)::after,
+.form-btn:focus:not(:active)::after, .role-submit-btn:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    20% {
+        transform: scale(25, 25);
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(40, 40);
+    }
+}
+
+
+/* Btn pour ajouter un vehicule */
+.add-vehicle-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.add-vehicle-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Btn pour supprimer un vehicle */
+.delete-vehicle-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-vehicle-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Detail du véhicule */
+#vehicle-details-content {
+    padding: 1rem;
+}
+
+/* Btn confirmation */
+.confirm-remove-all-btn, .confirm-revert-btn {
+    padding: 0.75rem 1rem;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-remove-all-btn:hover, .confirm-revert-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Compteur de caractere */
+.char-counter {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: right;
+    margin-top: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+/* Message d'erreur */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+    background-color: #fff8f8;
+}
+
+.important-warning {
+    color: #e74c3c;
+    font-weight: bold;
+    border-left: 3px solid #e74c3c;
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* suppression d'un véhicule lié à un covoit */
+.warning-message {
+    display: flex;
+    align-items: flex-start;
+    background-color: #fff3e0;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.warning-message i {
+    color: #ff9800;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.linked-trips {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.linked-trips li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linked-trips li:last-child {
+    border-bottom: none;
+}
+
+.trip-route {
+    font-weight: 500;
+}
+
+.trip-date {
+    color: #666;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cancel-button {
+    padding: 0.75rem 1rem;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
+
+.danger-button {
+    padding: 0.75rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.danger-button:hover {
+    background-color: #c0392b;
+}
+
+
+/* Trajets à venir */
+.booked-trips-widget .trip-driver{
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.booked-trips-widget .driver-label {
+    display: none;
+}
+
+.booked-trips-widget .driver-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+@media (max-width: 820px) {
+    .booked-trips-widget .trip-route {
+        justify-content: center;
+    }
+
+    .booked-trips-widget .trip-date {
+        text-align: center;
+    }
+
+    .booked-trips-widget .trip-time {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .booked-trips-widget .trip-card-footer {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 360px) {
+    .booked-trips-widget .trip-time {
+        flex-direction: column;
+    }
+
+    .booked-trips-widget .trip-card-footer {
+        flex-direction: column;
+    }
+
+    .booked-trips-widget .trip-detail-btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+}

@@ -1,4 +1,4 @@
-<nav class="navbar" x-data="{ open: false }">
+<nav class="navbar">
     <div class="logo">
         <a href="{{ route('welcome') }}">EcoRide</a>
     </div>
@@ -18,19 +18,19 @@
 
         @if (Auth::guard('admin')->check())
             <li>
-                <a href="{{ route('admin.dashboard') }}" class="user-nom">
+                <a href="{{ route('dashboard_admin') }}" class="user-nom">
                     ADMIN
                 </a>
             </li>
         @elseif(Auth::guard('employe')->check())
             <li>
-                <a href="{{ route('employe.dashboard') }}" class="user-nom">
+                <a href="{{ route('dashboard_employe') }}" class="user-nom">
                     {{ Auth::guard('employe')->user()->name }}
                 </a>
             </li>
         @elseif(Auth::guard('web')->check())
             <li>
-                <a href="{{ route('home') }}" class="user-nom">
+                <a href="{{ route('dashboard_users') }}" class="user-nom">
                     {{ Auth::guard('web')->user()->pseudo }}
                 </a>
             </li>
@@ -47,32 +47,4 @@
             <a href="{{ route('login') }}" class="cta-button">Connexion</a>
         @endif
     </ul>
-
-    <div class="mobile-menu" id="mobile-menu" :class="{'active': open, 'hidden': ! open}">
-        <a href="{{ route('welcome') }}" class="cta-button">Accueil</a>
-        <a href="{{ route('trips.index') }}" class="cta-button">Covoiturage</a>
-        <a href="{{ route('contact') }}" class="cta-button">Contact</a>
-
-        @if (Auth::guard('admin')->check())
-            <a href="{{ route('admin.dashboard') }}" class="cta-button user-identifier">ADMIN</a>
-        @elseif(Auth::guard('employe')->check())
-            <a href="{{ route('employe.dashboard') }}" class="cta-button user-identifier">
-                {{ Auth::guard('employe')->user()->name }}
-            </a>
-        @elseif(Auth::guard('web')->check())
-            <a href="{{ route('home') }}"
-                class="cta-button user-identifier">{{ Auth::guard('web')->user()->pseudo }}</a>
-        @endif
-
-        @if (Auth::guard('admin')->check() || Auth::guard('employe')->check() || Auth::guard('web')->check())
-            <form method="POST" action="{{ route('logout') }}" class="mobile-logout-form">
-                @csrf
-                <button type="submit" class="cta-button">Déconnexion</button>
-            </form>
-        @else
-            <a href="{{ route('login') }}" class="cta-button">Connexion</a>
-        @endif
-
-        <div class="close-menu" id="close-menu" @click="open = false">&times;</div>
-    </div>
 </nav>

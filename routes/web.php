@@ -24,17 +24,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/dashboard/users', function () {
+        return view('dashboard.users');
+    })->name('dashboard_users');
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard/admin', function () {
+        return view('dashboard.admin');
+    })->name('dashboard_admin');
 
-    Route::get('/employe/dashboard', function () {
-        return view('employe.dashboard');
-    })->name('employe.dashboard');
+    Route::get('/dashboard/employe', function () {
+        return view('dashboard.employe');
+    })->name('dashboard_employe');
 });
 
 require __DIR__.'/auth.php';
