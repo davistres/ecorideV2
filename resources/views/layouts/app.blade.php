@@ -1,36 +1,50 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="fr">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>EcoRide</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<body>
+    <!-- HEADER -->
+    <header>
+        @include('layouts.navigation') {{-- Using Breeze's navigation for now --}}
+    </header>
+
+    <!-- MAIN QUI CHANGE -->
+    <main>
+        @yield('content')
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="image-banner">
+            <img src="{{ asset('images/pexels-cottonbro-5329298.jpg') }}" alt="Covoiturage EcoRide" class="main-image">
         </div>
-    </body>
+        <div class="footer footer-content">
+            <p class="copyright">&copy; {{ date('Y') }} EcoRide</p>
+            <nav class="footer-nav">
+                <a href="{{ route('mentions-legales') }}">Mentions légales</a>
+                <a href="mailto:maildelentreprise@ecoride.fr">maildelentreprise@ecoride.fr</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <script src="{{ asset('js/forms.js') }}"></script>
+    <script src="{{ asset('js/reviews-slider.js') }}"></script>
+    <script src="{{ asset('js/covoiturage.js') }}"></script>
+    @yield('scripts')
+</body>
+
 </html>

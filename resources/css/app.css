@@ -1,3 +1,564 @@
+/* Reset et styles de base */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f1f8e9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header ////////////////////////////////////*/
+
+
+/* Header et Navigation */
+.navbar {
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.logo a {
+    color: #2ecc71;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: none;
+}
+
+.nav-links a {
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+/* Trait vert au survol =>cible tous les liens dans nav-link (sauf bouton connexion) */
+.nav-links a:not(.cta-button)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #2ecc71;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:not(.cta-button):hover::after {
+    width: 80%;
+    left: 10%;
+}
+
+/* bouton connexion de la navbar*/
+.nav-links .cta-button {
+    color: white;
+}
+
+/* Menu Burger */
+.burger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #2c3e50;
+    margin: 4px;
+    transition: 0.3s;
+}
+
+/* Menu Mobile */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 380px;
+    background-color: #2ecc71;
+    transition: left 0.3s ease-in-out;
+    padding-top: 80px;
+    z-index: 100;
+    border-radius: 0 0 10px 0;
+    box-shadow: 0 2px 10px 6px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.mobile-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close-menu {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.close-menu:hover {
+    transform: translateX(-50%) scale(1.2);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+/* "Utilisateur" après connexion  */
+.user-nom {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.user-identifier {
+    font-weight: bold;
+}
+
+.mobile-logout-form {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* main /////////////////////////////////////*/
+main {
+    padding-top: 80px; /* Hauteur approximative du menu desktop fixe */
+}
+
+
+/* Footer ///////////////////////////////////*/
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding-bottom: 2rem;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+}
+
+footer a {
+    color: #2ecc71;
+    text-decoration: none;
+}
+
+.footer-nav {
+    display: flex;
+    padding: 0 1rem;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-nav a[href^="mailto:"] {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.image-banner {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image-banner img {
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 2rem;
+}
+
+/* Version ordi */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        align-items: center;
+    }
+
+    .footer-nav {
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 0px;
+        margin-top: 0px;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+/* Boutons */
+.cta-button, .auth-button, .search-button, .btn-details, .btn-return-home, .suggested-date-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.cta-button:hover, .auth-button:hover, .search-button:hover, .btn-details:hover, .btn-return-home:hover, .suggested-date-btn:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Messages d'erreur et info */
+.error-message {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    padding: 0.8rem;
+    border-left: 4px solid #e74c3c;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    line-height: 3rem;
+}
+
+.info-message {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    padding: 1rem;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-success {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #2ecc71;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.alert-danger {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+
+
+.message-container {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.notification {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    max-width: 400px;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.notification-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.notification-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.notification-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+.notification-message {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.notification-close:hover {
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+
+
+/* info bulles dans main.js */
+.tooltip {
+    position: absolute;
+    background-color: #2c3e50;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    max-width: 250px;
+    text-align: center;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2c3e50 transparent transparent transparent;
+}
+
+/* Avertissement de compatibilité navigateur */
+.browser-compat-warning {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    max-width: 400px;
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.browser-compat-warning p {
+    margin-bottom: 0.5rem;
+}
+
+.close-warning {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #721c24;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.close-warning:hover {
+    opacity: 0.7;
+}
+
+
+/* Inputs et formulaires communs */
+.form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-help-text {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.radio-option, .rating-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.radio-option input, .rating-option input {
+    margin-right: 0.5rem;
+}
+
+.rating-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Formulaire en grille */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-section {
+    flex: 1;
+}
+
+.form-section h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.price-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.price-input-group input {
+    flex: 1;
+}
+
+.price-unit {
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 0 8px 8px 0;
+    color: #7f8c8d;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        flex-direction: row;
+    }
+}
