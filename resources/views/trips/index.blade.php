@@ -134,7 +134,7 @@
         </section>
 
         <!-- Section des filtres -->
-        @include('trips.partials.filters')
+        @include('trips.partials.filters', ['min_price' => $min_price, 'max_price' => $max_price, 'min_duration' => $min_duration, 'max_duration' => $max_duration, 'min_duration_formatted' => $min_duration_formatted, 'max_duration_formatted' => $max_duration_formatted])
 
         @if (isset($covoiturages) && count($covoiturages) > 0)
             <div class="results-title">

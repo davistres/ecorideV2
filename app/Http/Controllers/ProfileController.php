@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+    /**  Formulare de profil utilisateurs    */
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -21,25 +21,66 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
+    /** Mise à jour du profil utilisateur */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        if ($request->has('password') && !empty($request->input('password'))) {
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
+    /** Photo de profil */
+    public function updatePhoto(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'profile_photo' => 'required|image|mimes:jpeg,png|max:2048',
+        ]);
+
+        $user = $request->user();
+
+        if ($request->hasFile('profile_photo')) {
+            // Supprimer l'ancienne photo si elle existe
+            if ($user->photo) {
+                Storage::disk('public')->delete($user->photo);
+            }
+
+            $path = $request->file('profile_photo')->store('profile-photos', 'public');
+            $user->photo = $path;
+            $user->phototype = Storage::disk('public')->mimeType($path);
+            $user->save();
+        }
+
+        return Redirect::back()->with('status', 'profile-photo-updated');
+    }
+
+    /** Supprimer la photo de profil */
+    public function deletePhoto(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        if ($user->photo) {
+            Storage::disk('public')->delete($user->photo);
+            $user->photo = null;
+            $user->phototype = null;
+            $user->save();
+        }
+
+        return Redirect::back()->with('status', 'profile-photo-deleted');
+    }
+
+    /**  Suppression compte utilisateur  */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

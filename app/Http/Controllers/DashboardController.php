@@ -23,6 +23,17 @@ class DashboardController extends Controller
             $reservations = $user->confirmations;
         }
 
-        return view('dashboard.users', compact('trajets_chauffeur', 'vehicules', 'reservations'));
+        $profile_photo = null;
+        $profile_photo_mime = null;
+        $pendingSatisfactions = collect();
+        $passengerHistory = collect();
+        $driverHistory = collect();
+
+        // TODO:
+            // Logique pour récupérer la photo de profil et son type MIME
+            //  Logique pour récupérer les satisfactions en attente
+            // Logique pour récupérer l'historique passager et conducteur
+
+        return view('dashboard.users', compact('trajets_chauffeur', 'vehicules', 'reservations', 'profile_photo', 'profile_photo_mime', 'pendingSatisfactions', 'passengerHistory', 'driverHistory'));
     }
 }

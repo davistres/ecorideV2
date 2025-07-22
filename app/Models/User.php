@@ -29,6 +29,50 @@ class User extends Authenticatable
         'pref_libre',
     ];
 
+
+
+
+    // AVANT               MAINTENANT
+    // pseudo             = name
+    // profile_photo      = photo
+    // profile_photo_mime = phototype
+
+
+    public function getPseudoAttribute()
+    {
+        return $this->attributes['name'];
+    }
+
+
+    public function setPseudoAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+    }
+
+
+    public function getProfilePhotoAttribute()
+    {
+        return $this->attributes['photo'];
+    }
+
+
+    public function setProfilePhotoAttribute($value)
+    {
+        $this->attributes['photo'] = $value;
+    }
+
+
+    public function getProfilePhotoMimeAttribute()
+    {
+        return $this->attributes['phototype'];
+    }
+
+
+    public function setProfilePhotoMimeAttribute($value)
+    {
+        $this->attributes['phototype'] = $value;
+    }
+
     protected $hidden = [
         'password',
     ];
