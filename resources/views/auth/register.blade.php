@@ -5,11 +5,11 @@
         <form method="POST" action="{{ route('register') }}" class="auth-form">
             @csrf
 
-            <!-- Pseudo -->
+            <!-- Name -->
             <div class="form-group">
-                <x-input-label for="pseudo" value="Pseudo" />
-                <x-text-input id="pseudo" type="text" name="pseudo" :value="old('pseudo')" required autofocus autocomplete="pseudo" />
-                <x-input-error :messages="$errors->get('pseudo')" class="mt-2" />
+                <x-input-label for="name" value="Nom" />
+                <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
             <!-- Email Address -->

@@ -50,7 +50,7 @@
                 @elseif(Auth::guard('web')->check())
                     <li>
                         <a href="{{ route('dashboard_users') }}" class="user-nom">
-                            {{ Auth::guard('web')->user()->pseudo }}
+                            {{ Auth::guard('web')->user()->name }}
                         </a>
                     </li>
                 @endif
@@ -81,7 +81,7 @@
                 </a>
             @elseif(Auth::guard('web')->check())
                 <a href="{{ route('dashboard_users') }}"
-                    class="cta-button user-identifier">{{ Auth::guard('web')->user()->pseudo }}</a>
+                    class="cta-button user-identifier">{{ Auth::guard('web')->user()->name }}</a>
             @endif
 
             @if (Auth::guard('admin')->check() || Auth::guard('employe')->check() || Auth::guard('web')->check())

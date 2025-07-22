@@ -1,13 +1,13 @@
-<nav class="navbar">
+<nav class="navbar" x-data="{ open: false }">
     <div class="logo">
         <a href="{{ route('welcome') }}">EcoRide</a>
     </div>
-    <div class="burger" id="burger" @click="open = ! open">
+    <div class="burger" id="burger">
         <div></div>
         <div></div>
         <div></div>
     </div>
-    <ul class="nav-links">
+    <ul class="nav-links" x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
         <li><a href="{{ route('welcome') }}">Accueil</a></li>
         <li><a href="{{ route('trips.index') }}">Covoiturage</a></li>
         <li><a href="{{ route('contact') }}">Contact</a></li>
@@ -31,7 +31,7 @@
         @elseif(Auth::guard('web')->check())
             <li>
                 <a href="{{ route('dashboard_users') }}" class="user-nom">
-                    {{ Auth::guard('web')->user()->pseudo }}
+                    {{ Auth::guard('web')->user()->name }}
                 </a>
             </li>
         @endif
