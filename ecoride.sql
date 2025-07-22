@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mysql
--- Généré le : sam. 19 juil. 2025 à 19:33
+-- Généré le : mar. 22 juil. 2025 à 06:10
 -- Version du serveur : 8.0.32
 -- Version de PHP : 8.2.27
 
@@ -137,16 +137,24 @@ CREATE TABLE `satisfaction` (
 CREATE TABLE `users` (
   `user_id` bigint UNSIGNED NOT NULL,
   `name` varchar(18) NOT NULL,
-  `mail` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `n_credit` int UNSIGNED NOT NULL DEFAULT '20',
-  `idphoto` longblob,
+  `photo` longblob,
+  `phototype` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `role` enum('Passager','Conducteur','Les deux','Employé','Admin') NOT NULL DEFAULT 'Passager',
   `pref_smoke` enum('Fumeur','Non-fumeur') DEFAULT NULL,
   `pref_pet` enum('Acceptés','Non-acceptés') DEFAULT NULL,
   `pref_libre` text,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `n_credit`, `photo`, `phototype`, `role`, `pref_smoke`, `pref_pet`, `pref_libre`, `deleted_at`) VALUES
+(1, 'davistres', 'davistres@yahoo.fr', '$2y$12$wh5ch28qp4PQWDfCvqGEcef2h7or.UYGYPxpzSVq6LgjN6gbntd6O', 20, NULL, NULL, 'Passager', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,7 +229,7 @@ ALTER TABLE `satisfaction`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `mail` (`mail`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `voiture`
@@ -275,7 +283,7 @@ ALTER TABLE `satisfaction`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `voiture`
