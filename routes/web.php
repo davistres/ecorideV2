@@ -32,9 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profil', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/tableau-de-bord/utilisateurs', function () {
-        return view('dashboard.users');
-    })->name('dashboard_users');
+    Route::get('/tableau-de-bord/utilisateurs', [App\Http\Controllers\DashboardController::class, 'userDashboard'])->name('dashboard_users');
 
     Route::get('/tableau-de-bord/admin', function () {
         return view('dashboard.admin');
