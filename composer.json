@@ -7,9 +7,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1",
-        "mongodb/laravel-mongodb": "^5.4"
+        "laravel/framework": "^11.0",
+        "laravel/tinker": "^2.9",
+        "mongodb/laravel-mongodb": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -46,8 +46,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
+            "@php -r \"if (file_exists('database/database.sqlite')) { unlink('database/database.sqlite'); }\"",
+            "@php artisan migrate --graceful",
+            "@php artisan db:seed --graceful"
+        ],
+        "gcp-build": [
+            "@php artisan config:clear"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

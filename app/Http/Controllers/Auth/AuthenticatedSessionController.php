@@ -28,7 +28,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard_users', absolute: false));
+        // Redirection vers l'acceuil pour isoler le problème
+        return redirect()->route('welcome')->with('success', 'Connexion réussie !');
     }
 
     /**
